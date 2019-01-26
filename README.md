@@ -1,6 +1,6 @@
 ### Setup
 
-To use, create a tfvars file in the `data/` directory with the following contents (with example values):
+To use, create a tfvars file (for example, `prod.tfvars`) in the `data/` directory with the following contents (with example values):
 
 ```
 ###################
@@ -56,4 +56,4 @@ aws_access_key_id = YOUR_ACCESS_KEY
 aws_secret_access_key = YOUR_ACCESS_SECRET
 ```
 
-Finally, run `terraform init` and `terraform apply -var-file=data/dev.tfvars` 
+Finally, run `terraform init` and `terraform apply -var-file=data/prod.tfvars` 
