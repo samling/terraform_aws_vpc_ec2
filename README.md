@@ -1,6 +1,6 @@
 ### Setup
 
-To use, create a tfvars file (for example, `prod.tfvars`) in the `data/` directory with the following contents (with example values):
+To use, create a tfvars file (for example, `prod.tfvars`) in the `terraform/data/` directory with the following contents (with example values):
 
 ```
 ###################
@@ -24,7 +24,7 @@ public_subnets          = [ "10.0.1.0/24", "10.0.2.0/24" ] # Make sure the numbe
 private_subnets         = [ "10.0.3.0/24", "10.0.4.0/24" ]
 ```
 
-Then, create a file in the root directory called `ec2.tf` with an instance of the EC2 module for each set of servers:
+Then, create a file in the `terraform/` directory called `ec2.tf` with an instance of the EC2 module for each set of servers:
 
 ```
 module "WinServer2012R2" {
@@ -48,7 +48,7 @@ module "WinServer2012R2" {
 
 You can create multiple servers of a single type by setting `public_instance_count` and/or `private_instance_count` to a value other than 0.
 
-Lastly, create a `creds` file in the top level directory with the following contents (with example values):
+Lastly, create a `creds` file in the `terraform/` directory with the following contents (with example values):
 
 ```
 [default] # This is your 'profile' value in your tfvars file
