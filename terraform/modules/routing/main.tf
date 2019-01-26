@@ -9,7 +9,6 @@ locals {
 }
 
 resource "aws_route_table" "public" {
-    #count = "${var.create_vpc && length(var.public_subnets) > 0 ? 1 : 0}"
     count = "${length(var.public_subnets_cidr) > 0 ? 1 : 0}"
 
     vpc_id = "${var.vpc_id}"
@@ -18,7 +17,6 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route" "public_internet_gateway" {
-    #count = "${var.create_vpc && length(var.public_subnets) > 0 ? 1 : 0}"
     count = "${length(var.public_subnets_cidr) > 0 ? 1 : 0}"
 
     route_table_id          = "${aws_route_table.public.id}"
@@ -31,7 +29,6 @@ resource "aws_route" "public_internet_gateway" {
 }
 
 resource "aws_route_table" "private" {
-    #count = "${var.create_vpc && local.max_subnet_length > 0 ? local.nat_gateway_count : 0}"
     count = "${local.max_subnet_length > 0 ? local.nat_gateway_count : 0}"
 
     vpc_id = "${var.vpc_id}"

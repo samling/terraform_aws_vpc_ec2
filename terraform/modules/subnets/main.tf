@@ -2,7 +2,6 @@
 # Subnets #
 ###########
 resource "aws_subnet" "public" {
-    #count = "${var.create_vpc && length(var.public_subnets) > 0 && (length(var.public_subnets) >= length(var.azs)) ? length(var.public_subnets) : 0}"
     count = "${length(var.public_subnets) > 0 && (length(var.public_subnets) >= length(var.azs)) ? length(var.public_subnets) : 0}"
 
     vpc_id                              = "${var.vpc_id}"
@@ -14,7 +13,6 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private" {
-    #count = "${var.create_vpc && length(var.private_subnets) > 0 ? length(var.private_subnets) : 0}"
     count = "${length(var.private_subnets) > 0 ? length(var.private_subnets) : 0}"
 
     vpc_id                              = "${var.vpc_id}"
